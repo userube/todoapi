@@ -33,13 +33,13 @@ URL: localhost:8000/api/login
 Method: POST
 payload: 
 {
-    "email": "skwarus@yahoo.com",
-    "password": "Password1!"
+    "email": "mail@yahoo.com",
+    "password": "Password"
 }
 
 Success Response:
 {
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzE1MTc5MzA1LCJleHAiOjE3MTUxODI5MDUsIm5iZiI6MTcxNTE3OTMwNSwianRpIjoialVaWnR1b1UzZmhkMGxlNCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.COkqJTLeD-a93S08k8xbmCm7F0I9HRszzYZkrH_-Ddc",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzE1MTc5MzA1LCJleHAiOjE3MTUxODI5MDUsIm5iZiI6MTcxNTE3OTMwNSwianRpIjoialVaWnR1b1UzZmhkMGxlNCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhN",
     "token_type": "bearer",
     "expires_in": 3600
 }
@@ -123,14 +123,17 @@ Method - DELETE
 URL- localhost:8000/api/task/{id}
 ---------------------------
 
-Delete Todo
+## Delete Todo
 Method - DELETE 
 URL - localhost:8000/api/todo/{id}
 
 
 --------------------
-Commands To Run Test Cases:
+## Commands To Run Test Cases:
 
 php artisan test --filter AuthControllerTest
+-----------------
 php artisan test --filter TaskControllerTest
+------------------
 php artisan test --filter TodoListControllerTest
+
