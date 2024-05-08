@@ -1,66 +1,136 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Instructions
+Endpoints
+====================================
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Register
+URL: localhost:8000/api/register
+Method: POST
+payload: 
+{
+    "email": "email",
+    "name": "name",
+    "password": "password",
+    "password_confirmation": "password"
+}
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Success Response: 
+{
+    "status": true
+    "message": "User registered successfully"
+}
+Error Response: 
+{
+    "status": false
+    "message": "Error message"
+}
 
-## Learning Laravel
+-------------------------
+Login
+URL: localhost:8000/api/login
+Method: POST
+payload: 
+{
+    "email": "skwarus@yahoo.com",
+    "password": "Password1!"
+}
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Success Response:
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzE1MTc5MzA1LCJleHAiOjE3MTUxODI5MDUsIm5iZiI6MTcxNTE3OTMwNSwianRpIjoialVaWnR1b1UzZmhkMGxlNCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.COkqJTLeD-a93S08k8xbmCm7F0I9HRszzYZkrH_-Ddc",
+    "token_type": "bearer",
+    "expires_in": 3600
+}
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Error Response: 
+{
+    "error": "Unauthorized"
+}
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+------------------------------
+Create Todo List
+URL: localhost:8000/api/todo-lists/create
+Method: POST
+payload: 
+{
+    "names": "Mtk Todos"
+}
 
-## Laravel Sponsors
+Success Response:
+{
+    "name": "Mtk Todos",
+    "user_id": 2,
+    "updated_at": "2024-05-08T14:03:25.000000Z",
+    "created_at": "2024-05-08T14:03:25.000000Z",
+    "id": 1
+}
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Error Response: 
+{
+    "error": "Unauthorized"
+}
+------------------------------
+Create Task
+URL: localhost:8000/api/tasks/create
+Method: POST
+payload: 
+{
+    "description": "mtk todo list",
+    "due_date": "2024-06-10",
+    "todo_list_id": 1
+}
 
-### Premium Partners
+Success Response:
+{
+    "description": "mtk todo list",
+    "due_date": "2024-06-10",
+    "status": "pending",
+    "todo_list_id": 1,
+    "updated_at": "2024-05-08T14:11:08.000000Z",
+    "created_at": "2024-05-08T14:11:08.000000Z",
+    "id": 1
+}
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Error Response: 
+{
+    "error": "Failed to create task"
+}
+--------------------------
+Get Todos 
+Method - GET 
+URL - localhost:8000/api/todos
+--------------------------
 
-## Contributing
+Get Tasks 
+Method - GET 
+URL localhost:8000/api/tasks
+--------------------------
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Update Task 
+Method - PUT 
+URL - localhost:8000/api/task/{id}
+---------------------------
 
-## Code of Conduct
+Update Todo
+Method - PUT
+URL - localhost:8000/api/todo/{id}
+---------------------------
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Delete Task
+Method - DELETE 
+URL- localhost:8000/api/task/{id}
+---------------------------
 
-## Security Vulnerabilities
+Delete Todo
+Method - DELETE 
+URL - localhost:8000/api/todo/{id}
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+--------------------
+Commands To Run Test Cases:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+php artisan test --filter AuthControllerTest
+php artisan test --filter TaskControllerTest
+php artisan test --filter TodoListControllerTest
